@@ -171,7 +171,6 @@ exports.makeBadSignature = function makeSignature(whatever) {
 
 
 function recreateDatabase(callback) {
-  console.log(mysql)
   async.series([
     mysql.dropTestDatabase,
     mysql.createTestDatabase,
