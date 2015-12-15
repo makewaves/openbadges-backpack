@@ -18,10 +18,12 @@ User.prototype.getAllBadges = function(callback) {
     if (!err && badges) {
       // There doesn't appear to be a way to do this at the SQL level :(
       badges.sort(function(a, b) {
-        var aid = a.get('id'),
-            bid = b.get('id');
-        if (aid == bid) return 0;
-        return bid - aid;
+        var aName = a.get('body').badge.name.toLowerCase();
+        var bName = b.get('body').badge.name.toLowerCase();
+        
+        if (aName > bName) return 1;
+        if (aName < bName) return -1;
+        return 0;
       });
     }
 
